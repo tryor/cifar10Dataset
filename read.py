@@ -4,7 +4,7 @@ import cPickle,pickle
 
 def unpickle(file):
   with open(file, 'rb') as fo:
-    dict = cPickle.load(fo)
+    dict = pickle.load(fo)
     #dict = pickle.load(fo)
   return dict
 

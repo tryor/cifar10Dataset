@@ -4,9 +4,13 @@
 # Author: Yahui Liu <yahui.cvrs@gmail.com>; Try <trywen@qq.com>
 
 import os
-import pickle, cPickle
 import cv2
 import numpy as np
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
+
 
 BIN_COUNTS = 5
 
@@ -49,13 +53,13 @@ def pickled(savepath, data, label, fnames, bin_num=BIN_COUNTS, mode="train"):
       savename = 'test_batch'
       
     with open(os.path.join(savepath, savename), 'wb') as fi:
-      cPickle.dump(dict, fi)
+      pickle.dump(dict, fi)
     idx = idx + 1
 
 def unpickled(filename):
   assert os.path.isdir(filename)
   with open(filename, 'rb') as fo:
-    dict = cPickle.load(fo)
+    dict = pickle.load(fo)
   return dict
 
 
